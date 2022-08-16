@@ -1,31 +1,21 @@
-'use strict'
 
 document.getElementById('btn-withdraw').addEventListener('click', () => {
     // get withdraw value form input field
-    const withdrawField = document.getElementById('withdraw-field')
-    const newWithdrawAmountString = withdrawField.value 
-    const newWithdrawAmount = Number(newWithdrawAmountString)
+    const newWithdrawAmount = getInputValueById('withdraw-field')
 
     // previous withdraw amount
-    const withdraw = document.getElementById('withdraw-total')
-    const prevWithdrawAmountString = withdraw.innerText
-    const prevWithdrawAmount = Number(prevWithdrawAmountString)
+    const prevWithdrawAmount = getInnerTextById('withdraw-total')
 
     // get previous balance amount
-    const balance = document.getElementById('balance-total')
-    const prevBalanceAmountString = balance.innerText
-    const prevBalanceAmount = Number(prevBalanceAmountString)
+    const prevBalanceAmount = getInnerTextById('balance-total')
 
     // calculating current withdraw & balance amount
     const currWithdraw = prevWithdrawAmount + newWithdrawAmount
     const currBalance = prevBalanceAmount - newWithdrawAmount
 
     // update withdraw amount
-    withdraw.innerText = currWithdraw
+    setInnerTextById('withdraw-total', currWithdraw)
 
     // update balance amount 
-    balance.innerText = currBalance
-    
-    // clearnig withdraw input field
-    withdrawField.value = ''
+    setInnerTextById('balance-total', currBalance)
 })
