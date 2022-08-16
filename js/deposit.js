@@ -4,17 +4,17 @@ document.getElementById('btn-deposit').addEventListener('click', () => {
     // value form input field
     const depositField = document.getElementById('deposit-field')
     const newDepositAmountString = depositField.value 
-    const newDepositAmount = parseFloat(newDepositAmountString)
+    const newDepositAmount = Number(newDepositAmountString)
 
     // previous deposit value
     const deposit = document.getElementById('deposit-total')
     const prevDepositAmountString = deposit.innerText
-    const prevDepositAmount = parseFloat(prevDepositAmountString)
+    const prevDepositAmount = Number(prevDepositAmountString)
 
     // get previous balance amount
     const balance = document.getElementById('balance-total')
     const prevBalanceAmountString = balance.innerText
-    const prevBalanceAmount = parseFloat(prevBalanceAmountString)
+    const prevBalanceAmount = Number(prevBalanceAmountString)
 
     // calculating deposit & balance
     const currDeposit = prevDepositAmount + newDepositAmount
@@ -25,6 +25,7 @@ document.getElementById('btn-deposit').addEventListener('click', () => {
 
     // updating balance amount
     balance.innerText = currBalance
-    console.log(prevBalanceAmount, typeof prevBalanceAmount)
+    
+    // clearing input field
     depositField.value = ''
 })
